@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class Generics11 {
@@ -23,6 +24,9 @@ public class Generics11 {
         grocery.add(3);
         grocery.add(4);
 
+        // Using Lambda expression for printing
+        grocery.forEach(System.out::println);
+
 
         for (Integer a: grocery) {
             System.out.printf("%s ", a);
@@ -35,6 +39,7 @@ public class Generics11 {
 
         Container<Number> obj2 = new Container<Number>();
         obj2.showDetails(grocery);
+
 
         // Common Method for all type
         GenericWithAll gwa = new GenericWithAll();
@@ -51,7 +56,7 @@ public class Generics11 {
 //        System.out.println(gmlt.showData(2.9));     // This will not work here as we have specified the Integer type only
 //        System.out.println(gmlt.showData("Hello")); // This will not work here as we have specified the Integer type only
 
-
+        // Specific method for enhanced limit
     }
 }
 
@@ -100,6 +105,7 @@ class GenericsClass {
     }
 }
 
+
 class Container<T> {
     T value1;
 
@@ -125,6 +131,9 @@ class Container<T> {
     public void showDetails(ArrayList<? extends T> list) {
         System.out.println(list.getClass().getName());
     }
+    // Here question marks must be a subclass of T
+    // For Example Integer is Subclass of Number
+    // And Number is subclass of Object
 }
 
 
@@ -140,8 +149,8 @@ class GenericWithLimited {
     }
 }
 
-class GenericWithEnhancedLimit {
-    public <T extends Container> T showData(T value) {
-        return value;
-    }
+class CollectionsWithGenerics {
+    int[] values1 = new int[]{1, 2, 3, 4, 5};
+    Object[] value2 = new Object[]{"abc", "def", "ghi", "jkl", "mno"};
 }
+
