@@ -52,6 +52,7 @@ class MapClass {
         set.put("apple", 3);
         set.put("orange", 4);
         set.put("pepper", 5);
+        set.put("pepper", 6);
 
         System.out.println("Map: " + set);    // set only have unique items
 
@@ -60,8 +61,8 @@ class MapClass {
 
 class HashMapClass {
     public void mapMethod() {
-        String[] grocery = {"eggs", "cheese", "apple", "orange", "pepper", "pie", "eggs", "banana"};
-        Integer[] keys = {1, 2, 3, 4, 5, 6, 7, 8};
+        String[] keys = {"eggs", "cheese", "apple", "orange", "pepper", "pie", "eggs", "banana"};
+        Integer[] values = {1, 2, 3, 4, 5, 6, 7, 8};
 
         HashMap<String, Integer> set = new HashMap<String, Integer>();
         set.put("eggs", 1);

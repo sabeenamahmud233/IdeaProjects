@@ -22,8 +22,6 @@ enum Season {
         return ENUMS[season - 1];
     }
 
-
-
     private int number;
 
     Season() {
@@ -41,23 +39,38 @@ enum Season {
 
 public class EnumExplained {
     public static void main(String[] args) {
-        Season season1 = Season.WINTER;
-        System.out.println(season1);
 
-        Season season2 = Season.valueOf("WINTER");
+        Season season1 = Season.WINTER;
+        Season season2 = Season.SPRING;
+        Season season3 = Season.SUMMER;
+        Season season4 = Season.FALL;
+
+        System.out.println(season1);
         System.out.println(season2);
+        System.out.println(season3);
+        System.out.println(season4);
+
+        System.out.println(season1.name());
         System.out.println(season2.name());
+        System.out.println(season3.name());
+        System.out.println(season4.name());
+
+        System.out.println(season1.ordinal());
         System.out.println(season2.ordinal());
-        System.out.println(Arrays.toString(season2.values()));
+        System.out.println(season3.ordinal());
+        System.out.println(season4.ordinal());
+
+        System.out.println(Arrays.toString(Season.values()));
+
         System.out.println(Season.of(1));
         System.out.println(Season.of(2));
         System.out.println(Season.of(3));
         System.out.println(Season.of(4));
+
         try {
             System.out.println(Season.of(5));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
 }

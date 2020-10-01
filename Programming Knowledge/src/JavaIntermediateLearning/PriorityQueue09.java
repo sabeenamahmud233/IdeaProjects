@@ -25,7 +25,7 @@ class QueueClass {
         System.out.printf("%s, ", q);
         System.out.println();
 
-        System.out.printf("%s, ", q.poll());    // it will remove the top pririty item that is "First"
+        System.out.printf("%s, ", q.poll());    // it will remove the top priority item that is "First"
         System.out.println();
 
         System.out.printf("%s, ", q);

@@ -3,6 +3,7 @@ package JavaIntermediateLearning;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -27,6 +28,9 @@ public class Stream15 {
 
         Stream06 method6 = new Stream06();
         method6.streamMethod();
+
+        Stream07 method7 = new Stream07();
+        method7.streamMethod();
     }
 }
 
@@ -204,6 +208,7 @@ class Stream05 {
 // Stream Filter Explained
 class Stream06 {
     public void streamMethod() {
+//        List<Integer> list = Arrays.asList(11, 17, 256, 122, 568, 452);
         List<Integer> list = Arrays.asList(11, 17, 256, 200, 125, 121, 555, 237, 600);
 
         /*
@@ -223,9 +228,30 @@ class Stream06 {
         // Using the filter method mentioned below
 
         System.out.println(list.stream()
-                               .filter(i -> i % 5 == 0)
-                               .reduce(0, Integer::sum));
+                .filter(i -> i % 5 == 0)
+                .reduce(0, Integer::sum));
 
+
+        // findFirst function
+        System.out.println(list.stream()
+                .filter(i -> i % 5 == 0)
+                .findFirst());
+
+        // alternate of findFirst function
+        Optional<Integer> found = Optional.empty();
+        for (Integer i : list) {
+            if (i % 5 == 0) {
+                found = Optional.of(i);
+                break;
+            }
+        }
+        System.out.println(found);
+
+        // alternate of findFirst function
+        System.out.println(list.stream()
+                .filter(i -> i % 5 == 0)
+                .findFirst()
+                .orElse(1));
 
 
         // Explaining the above code (Filter Code)
@@ -240,10 +266,40 @@ class Stream06 {
             }
         };
 
+        // reducing it further
         System.out.println(list.stream()
                 .filter(p)
                 .reduce(0, Integer::sum));
 
         */
+    }
+}
+
+// Explaining Stream's Lazy evolution concept
+class Stream07 {
+    public void streamMethod() {
+        List<Integer> list = Arrays.asList(11, 17, 256, 200, 125, 121, 555, 237, 600);
+
+        System.out.println(list.stream()
+                .filter(i -> i % 5 == 0)
+                .map(i -> i * 2)
+                .findFirst()
+                .orElse(0));
+
+        System.out.println(list.stream()
+                .filter(Stream07::isDivisible)
+                .map(Stream07::mapDouble)
+                .findFirst()
+                .orElse(0));
+    }
+
+    public static boolean isDivisible(int i) {
+        System.out.println("in isDivisible " + i);
+        return i % 5 == 0;
+    }
+
+    public static int mapDouble(int i) {
+        System.out.println("in mapDouble " + i);
+        return i * 2;
     }
 }
